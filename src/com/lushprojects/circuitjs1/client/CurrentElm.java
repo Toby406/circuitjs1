@@ -42,31 +42,39 @@ package com.lushprojects.circuitjs1.client;
 	
 	Polygon arrow;
 	Point ashaft1, ashaft2, center;
+	final int circleSize = 17;
+
 	void setPoints() {
 	    super.setPoints();
-	    calcLeads(26);
-	    ashaft1 = interpPoint(lead1, lead2, .25);
-	    ashaft2 = interpPoint(lead1, lead2, .6);
+	    calcLeads(circleSize * 2);
 	    center = interpPoint(lead1, lead2, .5);
-	    Point p2 = interpPoint(lead1, lead2, .75);
-	    arrow = calcArrow(center, p2, 4, 4);
+		double offsetX = lead1.y - lead2.y;
+		double offsetY = lead2.x - lead1.x;
+		double len = Math.sqrt(offsetX*offsetX + offsetY*offsetY);
+		offsetX *= circleSize/len;
+		offsetY *= circleSize/len;
+		ashaft1 = new Point(center.x + (int) (offsetX), center.y + (int) (offsetY));
+		ashaft2 = new Point(center.x - (int) (offsetX), center.y - (int) (offsetY));
+		
+		Point p2 = interpPoint(lead1, lead2, 1.5);
+		arrow = calcArrow(lead2, p2, 14, 7);
 	}
 	void draw(Graphics g) {
-	    int cr = 12;
 	    draw2Leads(g);
 	    setVoltageColor(g, (volts[0]+volts[1])/2);
 	    setPowerColor(g, false);
 	    
-	    drawThickCircle(g, center.x, center.y, cr);
-	    drawThickLine(g, ashaft1, ashaft2);
+	    drawThickCircle(g, center.x, center.y, circleSize);
+		g.fillPolygon(arrow);
+		//draw line perpendicular this line
+	    drawThickLine(g, ashaft1, ashaft2);									
 
-	    g.fillPolygon(arrow);
-	    setBbox(point1, point2, cr);
+	    setBbox(point1, point2, circleSize);
 	    doDots(g);
 	    if (sim.showValuesCheckItem.getState() && current != 0) {
 		String s = getShortUnitText(current, "A");
 		if (dx == 0 || dy == 0)
-		    drawValues(g, s, cr);
+		    drawValues(g, s, circleSize);
 	    }
 	    drawPosts(g);
 	}

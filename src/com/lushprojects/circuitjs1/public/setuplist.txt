@@ -1,4 +1,35 @@
 ### setuplist.txt first line must be a comment
++Uebungen
++Uebung 2
+uebungen/u2a10.txt Aufgabe 10
+-
++Uebung 3
+uebungen/u3a3c.txt Aufgabe 3c
+-
++Uebung 5
+uebungen/u5a3.txt Aufgabe 3
+-
++Uebung 6
+uebungen/u6a2.txt Aufgabe 2
+-
++Uebung 7
+uebungen/u7a3b.txt Aufgabe 3b
+-
++Uebung 8
+uebungen/u8a1.txt Aufgabe 1
+-
++Uebung 9
+uebungen/u9a1a.txt Aufgabe 1a
+uebungen/u9a1b.txt Aufgabe 1b
+-
++Uebung 11
+uebungen/u11a1.txt Aufgabe 1
+uebungen/u11a3a.txt Aufgabe 3a
+uebungen/u11a3b.txt Aufgabe 3b
+uebungen/u11a3c.txt Aufgabe 3c
+-
+-
++Beispiele
 +Basics
 ohms.txt Ohm's Law
 resistors.txt Resistors
